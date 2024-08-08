@@ -1,0 +1,56 @@
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry]
+name = "reviewer_stk_ai"
+version = "1.0.0"
+description = "Automated analysis with Stackspot AI offers capabilities such as code review generation, documentation creation, and much more."
+authors = ["Frank William <williamsp1184@gmail.com>"]
+maintainers = ["Frank William <williamsp1184@gmail.com>"]
+license = "MIT"
+readme = "README.md"
+homepage = "https://github.com/william1184/code-analyzer-stk-ai"
+classifiers = [
+    "Programming Language :: Python :: 3.11",
+    "Operating System :: OS Independent"
+]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+colorlog = "^6.8.2"
+requests = "^2.32.3"
+gitpython = "^3.1.43"
+click = "^8.1.7"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.2.1"
+requests-mock = "^1.12.1"
+coverage = "^7.5.4"
+black = "^24.4.2"
+pytest-randomly = "^3.15.0"
+pytest-cov = "^5.0.0"
+
+[tool.poetry.scripts]
+reviewer_stk_ai = "reviewer_stk_ai.__main__:main"
+
+#[tool.poetry.extras]
+# Extras can be specified here if needed
+
+[tool.pytest.ini_options]
+minversion = "8.2.1"
+addopts = "-ra -q"
+pythonpath = [
+    "reviewer_stk_ai"
+]
+testpaths = [
+    "tests",
+]
+
+[tool.coverage.report]
+fail_under = 90
+
+[tool.coverage.run]
+branch = true
+source = ["reviewer_stk_ai"]
+omit = ["./tests/*", ".venv/*", "*/__init__.py"]

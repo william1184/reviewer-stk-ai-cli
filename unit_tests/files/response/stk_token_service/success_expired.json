@@ -1,0 +1,10 @@
+{
+	"not-before-policy": 0,
+	"session_state": "",
+	"scope": "",
+	"refresh_token": "refresh_token_value",
+	"refresh_expires_in": 28800,
+	"access_token": "access_token_value_2",
+	"token_type": "Bearer",
+	"expires_in": 0
+}

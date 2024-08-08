@@ -1,0 +1,12 @@
+{
+	"details": [
+		{
+			"loc": [
+				"body",
+				"input_data"
+			],
+			"msg": "input_data must be either a string or a dictionary",
+			"type": "value_error"
+		}
+	]
+}
