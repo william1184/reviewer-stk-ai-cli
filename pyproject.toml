@@ -3,14 +3,14 @@ requires = ["poetry-core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"
 
 [tool.poetry]
-name = "reviewer_stk_ai"
-version = "1.0.0"
+name = "reviewer-stk-ai"
+version = "1.1.0"
 description = "Automated analysis with Stackspot AI offers capabilities such as code review generation, documentation creation, and much more."
 authors = ["Frank William <williamsp1184@gmail.com>"]
 maintainers = ["Frank William <williamsp1184@gmail.com>"]
 license = "MIT"
 readme = "README.md"
-homepage = "https://github.com/william1184/code-analyzer-stk-ai"
+homepage = "https://github.com/william1184/content-reviewer-stk-ai-cli"
 classifiers = [
     "Programming Language :: Python :: 3.11",
     "Operating System :: OS Independent"
