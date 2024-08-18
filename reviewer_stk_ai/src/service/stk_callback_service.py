@@ -1,16 +1,21 @@
 import logging
-import os
 import time
 
 import requests
+from retrying import retry
 
-from src.config.env_config import EnvConfig
-from src.exceptions.authentication_error import AuthenticationError
-from src.exceptions.integration_contract_error import IntegrationContractError
-from src.exceptions.integration_error import IntegrationError
-from src.exceptions.service_permission_error import ServicePermissionError
-from src.service.stk_token_service import StkTokenService
-from src.utils.constants import APPLICATION_NAME
+from reviewer_stk_ai.src.config.env_config import EnvConfig
+from reviewer_stk_ai.src.exceptions.authentication_error import AuthenticationError
+from reviewer_stk_ai.src.exceptions.integration_contract_error import (
+    IntegrationContractError,
+)
+from reviewer_stk_ai.src.exceptions.integration_error import IntegrationError
+from reviewer_stk_ai.src.exceptions.service_permission_error import (
+    ServicePermissionError,
+)
+from reviewer_stk_ai.src.service.stk_token_service import StkTokenService
+from reviewer_stk_ai.src.utils.constants import APPLICATION_NAME
+from reviewer_stk_ai.src.exceptions import retry_if_integration_error
 
 logger = logging.getLogger(APPLICATION_NAME)
 
@@ -24,11 +29,19 @@ class StkCallbackService:
 
     def __init__(self, env_config: EnvConfig = None, stk_token_service=None):
         self._stk_token_service = stk_token_service
-        self._url = env_config.get_host_stk_ai() + "/v1/quick-commands/callback/{execution_id}"
+        self._url = (
+            env_config.get_host_stk_ai() + "/v1/quick-commands/callback/{execution_id}"
+        )
         self._retry_count_callback = int(env_config.get_stk_retry_count_callback())
         self._retry_timeout = int(env_config.get_stk_retry_timeout())
         self._proxies = env_config.get_proxies()
 
+    @retry(
+        retry_on_exception=retry_if_integration_error,
+        stop_max_attempt_number=3,
+        wait_exponential_multiplier=1000,
+        wait_exponential_max=5000,
+    )
     def find(self, execution_id: str):
         logger.info(f"Starting search for STK AI response")
         url = self._url.format(execution_id=execution_id)
@@ -58,8 +71,8 @@ class StkCallbackService:
                             }
                         elif execution_data["progress"]["status"] == "RUNNING":
                             execution_percentage = (
-                                    int(execution_data["progress"]["execution_percentage"])
-                                    * 100
+                                int(execution_data["progress"]["execution_percentage"])
+                                * 100
                             )
                             logger.info(
                                 f"Processing {execution_id} is {execution_percentage}% complete...."
@@ -96,10 +109,12 @@ class StkCallbackService:
                     f"Permission failure with STK AI result API: {response.text}"
                 )
 
-            raise IntegrationError(
-                f"Failed to integrate with STK AI result API: status_code: {response.status_code}"
-                f' message: {response.text or "No message"}'
-            )
+            if e.response.status_code >= 500:
+                raise IntegrationError(
+                    f"Failed to integrate with STK AI result API: status_code: {response.status_code}"
+                    f' message: {response.text or "No message"}'
+                )
+            raise
         except Exception as e:
             logger.error(f"Error fetching result for {execution_id}: {e.args[0]}")
             raise

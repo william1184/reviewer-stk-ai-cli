@@ -1,4 +1,3 @@
-import os
 import unittest
 from unittest import TestCase
 from unittest.mock import Mock, MagicMock
@@ -6,10 +5,12 @@ from unittest.mock import Mock, MagicMock
 import requests_mock
 from requests_mock import Mocker
 
-from src.exceptions.authentication_error import AuthenticationError
-from src.exceptions.integration_contract_error import IntegrationContractError
-from src.exceptions.integration_error import IntegrationError
-from src.service.stk_execution_service import StkExecutionService
+from reviewer_stk_ai.src.exceptions.authentication_error import AuthenticationError
+from reviewer_stk_ai.src.exceptions.integration_contract_error import (
+    IntegrationContractError,
+)
+from reviewer_stk_ai.src.exceptions.integration_error import IntegrationError
+from reviewer_stk_ai.src.service.stk_execution_service import StkExecutionService
 from unit_tests.files.mock import read_json_file
 
 
@@ -38,7 +39,7 @@ class TestStkExecutionService(TestCase):
 
     @requests_mock.Mocker()
     def test__when_required_fields_filled_and_with_conversation_id__then_return_execution_id(
-            self, mock_request: Mocker
+        self, mock_request: Mocker
     ):
         # arrange
         self._mock_stk_token_service.generate_token.return_value = "bearer token"
@@ -59,7 +60,7 @@ class TestStkExecutionService(TestCase):
 
     @requests_mock.Mocker()
     def test__when_required_fields_filled_and_without_conversation_id__then_return_execution_id(
-            self, mock_request: Mocker
+        self, mock_request: Mocker
     ):
         # arrange
         self._mock_stk_token_service.generate_token.return_value = "bearer token"
@@ -77,7 +78,7 @@ class TestStkExecutionService(TestCase):
 
     @requests_mock.Mocker()
     def test__when_required_fields_filled_and_return_400__then_return_error(
-            self, mock_request: Mocker
+        self, mock_request: Mocker
     ):
         # arrange
         self._mock_stk_token_service.generate_token.return_value = "bearer token"
@@ -94,10 +95,11 @@ class TestStkExecutionService(TestCase):
         # assert
         self.assertIn("Execution API contract failure", ctx.exception.args[0])
         self._mock_stk_token_service.generate_token.assert_called_once()
+        self.assertEqual(1, mock_request.call_count)
 
     @requests_mock.Mocker()
     def test__when_required_fields_filled_and_return_401__then_return_error(
-            self, mock_request: Mocker
+        self, mock_request: Mocker
     ):
         # arrange
         self._mock_stk_token_service.generate_token.return_value = "bearer token"
@@ -119,7 +121,7 @@ class TestStkExecutionService(TestCase):
 
     @requests_mock.Mocker()
     def test__when_required_fields_filled_and_return_500__then_return_error(
-            self, mock_request: Mocker
+        self, mock_request: Mocker
     ):
         # arrange
         self._mock_stk_token_service.generate_token.return_value = "bearer token"
@@ -134,11 +136,11 @@ class TestStkExecutionService(TestCase):
 
         # assert
         self.assertIn("Integration with execution API failed", ctx.exception.args[0])
-        self._mock_stk_token_service.generate_token.assert_called_once()
+        self.assertEqual(3, self._mock_stk_token_service.generate_token.call_count)
 
     @requests_mock.Mocker()
     def test__when_token_generation_fails__then_return_error(
-            self, mock_request: Mocker
+        self, mock_request: Mocker
     ):
         # arrange
         self._mock_stk_token_service.generate_token.side_effect = IntegrationError(
@@ -151,8 +153,8 @@ class TestStkExecutionService(TestCase):
 
         # assert
         self.assertEqual("Token generation failure", ctx.exception.args[0])
-        self._mock_stk_token_service.generate_token.assert_called_once()
-        self.assertEqual(0, mock_request.called)
+        self.assertEqual(3, self._mock_stk_token_service.generate_token.call_count)
+        self.assertEqual(0, mock_request.call_count)
 
 
 if __name__ == "__main__":

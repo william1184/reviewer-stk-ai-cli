@@ -22,7 +22,6 @@ def call_direct(func_var, execution_id):
 
 
 class TestReviewerService(TestCase):
-    _mock_sts_token_service = None
     _mock_stk_execution_service = None
     _mock_stk_callback_service = None
     _mock_pool = None
@@ -31,13 +30,11 @@ class TestReviewerService(TestCase):
     @patch("multiprocessing.Pool")
     def setUp(self, mock_pool):
         self._mock_pool = mock_pool
-        self._mock_sts_token_service = Mock()
         self._mock_stk_execution_service = Mock()
         self._mock_stk_callback_service = Mock()
         from src.service.reviewer_service import ReviewerService
 
         self._service = ReviewerService(
-            stk_token_service=self._mock_sts_token_service,
             stk_execution_service=self._mock_stk_execution_service,
             stk_callback_service=self._mock_stk_callback_service,
         )

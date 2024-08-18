@@ -1,0 +1,244 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Stk ai token",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3001/"
+    }
+  ],
+  "paths": {
+    "/zup/oidc/oauth/token": {
+      "post": {
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "text/html; charset=utf-8": {
+                "example": "{\r\n\t\"not-before-policy\": 0,\r\n\t\"session_state\": \"\",\r\n\t\"scope\": \"\",\r\n\t\"refresh_token\": \"refresh_token_value\",\r\n\t\"refresh_expires_in\": 28800,\r\n\t\"access_token\": \"access_token_value\",\r\n\t\"token_type\": \"Bearer\",\r\n\t\"expires_in\": 1199\r\n}"
+              }
+            },
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "schema": {
+                  "type": "string"
+                },
+                "example": "*"
+              },
+              "Access-Control-Allow-Methods": {
+                "schema": {
+                  "type": "string"
+                },
+                "example": "GET,POST,PUT,PATCH,DELETE,HEAD,OPTIONS"
+              },
+              "Access-Control-Allow-Headers": {
+                "schema": {
+                  "type": "string"
+                },
+                "example": "Content-Type, Origin, Accept, Authorization, Content-Length, X-Requested-With"
+              },
+              "access-control-allow-headers": {
+                "schema": {
+                  "type": "string"
+                },
+                "example": "Content-Type, Origin, Accept, Authorization, Content-Length, X-Requested-With"
+              },
+              "access-control-allow-methods": {
+                "schema": {
+                  "type": "string"
+                },
+                "example": "GET,POST,PUT,PATCH,DELETE,HEAD,OPTIONS"
+              },
+              "access-control-allow-origin": {
+                "schema": {
+                  "type": "string"
+                },
+                "example": "*"
+              },
+              "content-security-policy": {
+                "schema": {
+                  "type": "string"
+                },
+                "example": "default-src 'none'"
+              },
+              "x-content-type-options": {
+                "schema": {
+                  "type": "string"
+                },
+                "example": "nosniff"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/quick-commands/create-execution/code-review-python-ptbr": {
+      "post": {
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "example": "\"01HYRHKFPFAZK1FFF8HVKWYEDN\""
+              }
+            },
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "schema": {
+                  "type": "string"
+                },
+                "example": "*"
+              },
+              "Access-Control-Allow-Methods": {
+                "schema": {
+                  "type": "string"
+                },
+                "example": "GET,POST,PUT,PATCH,DELETE,HEAD,OPTIONS"
+              },
+              "Access-Control-Allow-Headers": {
+                "schema": {
+                  "type": "string"
+                },
+                "example": "Content-Type, Origin, Accept, Authorization, Content-Length, X-Requested-With"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/quick-commands/callback/01HYRHKFPFAZK1FFF8HVKWYEDN": {
+      "get": {
+        "description": "",
+        "responses": {
+          "200": {
+            "description": " (copy)",
+            "content": {
+              "text/html; charset=utf-8": {
+                "example": "{\n  \"execution_id\": \"01HYRHKFPFAZK1FFF8HVKWYEDN\",\n  \"quick_command_slug\": \"quick-command-remoto\",\n  \"conversation_id\": \"01HYRHKFPF9PNNJQ91AKRX98PZ\",\n  \"progress\": {\n    \"start\": \"2024-05-25T18:53:25.583723+00:00\",\n    \"end\": \"2024-05-25T18:53:31.013144+00:00\",\n    \"duration\": 5,\n    \"execution_percentage\": 1,\n    \"status\": \"COMPLETED\"\n  },\n  \"steps\": [\n    {\n      \"step_name\": \"quick-command-remoto\",\n      \"execution_order\": 0,\n      \"type\": \"LLM\",\n      \"step_result\": {\n        \"answer\": \"I am not able to perform the code review of this file.\",\n        \"sources\": []\n      }\n    }\n  ],\n  \"result\": \"Points found:\\\\n'\\n           'I am not able to perform the code review of this file. \"\n}"
+              }
+            },
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "schema": {
+                  "type": "string"
+                },
+                "example": "*"
+              },
+              "Access-Control-Allow-Methods": {
+                "schema": {
+                  "type": "string"
+                },
+                "example": "GET,POST,PUT,PATCH,DELETE,HEAD,OPTIONS"
+              },
+              "Access-Control-Allow-Headers": {
+                "schema": {
+                  "type": "string"
+                },
+                "example": "Content-Type, Origin, Accept, Authorization, Content-Length, X-Requested-With"
+              },
+              "access-control-allow-headers": {
+                "schema": {
+                  "type": "string"
+                },
+                "example": "Content-Type, Origin, Accept, Authorization, Content-Length, X-Requested-With"
+              },
+              "access-control-allow-methods": {
+                "schema": {
+                  "type": "string"
+                },
+                "example": "GET,POST,PUT,PATCH,DELETE,HEAD,OPTIONS"
+              },
+              "access-control-allow-origin": {
+                "schema": {
+                  "type": "string"
+                },
+                "example": "*"
+              },
+              "content-security-policy": {
+                "schema": {
+                  "type": "string"
+                },
+                "example": "default-src 'none'"
+              },
+              "x-content-type-options": {
+                "schema": {
+                  "type": "string"
+                },
+                "example": "nosniff"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/quick-commands/callback/01HYRHKFPFAZK1FFF8HVKWYEDQ": {
+      "get": {
+        "description": "",
+        "responses": {
+          "200": {
+            "description": " (copy)",
+            "content": {
+              "text/html; charset=utf-8": {
+                "example": "{\n  \"execution_id\": \"01HYRHKFPFAZK1FFF8HVKWYEDQ\",\n  \"quick_command_slug\": \"quick-command-remoto\",\n  \"conversation_id\": \"01HYRHKFPF9PNNJQ91AKRX98PZ\",\n  \"progress\": {\n    \"start\": \"2024-05-25T18:53:25.583723+00:00\",\n    \"end\": \"2024-05-25T18:53:31.013144+00:00\",\n    \"duration\": 5,\n    \"execution_percentage\": 1,\n    \"status\": \"COMPLETED\"\n  },\n  \"steps\": [\n    {\n      \"step_name\": \"quick-command-remoto\",\n      \"execution_order\": 0,\n      \"type\": \"LLM\",\n      \"step_result\": {\n        \"answer\": \"I am not able to perform the code review of this file.\",\n        \"sources\": []\n      }\n    }\n  ],\n  \"result\": \"Points found:\\\\n'\\n           'I am not able to perform the code review of this file. \"\n}"
+              }
+            },
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "schema": {
+                  "type": "string"
+                },
+                "example": "*"
+              },
+              "Access-Control-Allow-Methods": {
+                "schema": {
+                  "type": "string"
+                },
+                "example": "GET,POST,PUT,PATCH,DELETE,HEAD,OPTIONS"
+              },
+              "Access-Control-Allow-Headers": {
+                "schema": {
+                  "type": "string"
+                },
+                "example": "Content-Type, Origin, Accept, Authorization, Content-Length, X-Requested-With"
+              },
+              "access-control-allow-headers": {
+                "schema": {
+                  "type": "string"
+                },
+                "example": "Content-Type, Origin, Accept, Authorization, Content-Length, X-Requested-With"
+              },
+              "access-control-allow-methods": {
+                "schema": {
+                  "type": "string"
+                },
+                "example": "GET,POST,PUT,PATCH,DELETE,HEAD,OPTIONS"
+              },
+              "access-control-allow-origin": {
+                "schema": {
+                  "type": "string"
+                },
+                "example": "*"
+              },
+              "content-security-policy": {
+                "schema": {
+                  "type": "string"
+                },
+                "example": "default-src 'none'"
+              },
+              "x-content-type-options": {
+                "schema": {
+                  "type": "string"
+                },
+                "example": "nosniff"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,14 +1,17 @@
 import logging
-import os
 
 import requests
+from retrying import retry
 
-from src.config.env_config import EnvConfig
-from src.exceptions.authentication_error import AuthenticationError
-from src.exceptions.integration_contract_error import IntegrationContractError
-from src.exceptions.integration_error import IntegrationError
-from src.service.stk_token_service import StkTokenService
-from src.utils.constants import APPLICATION_NAME
+from reviewer_stk_ai.src.config.env_config import EnvConfig
+from reviewer_stk_ai.src.exceptions.authentication_error import AuthenticationError
+from reviewer_stk_ai.src.exceptions.integration_contract_error import (
+    IntegrationContractError,
+)
+from reviewer_stk_ai.src.exceptions.integration_error import IntegrationError
+from reviewer_stk_ai.src.service.stk_token_service import StkTokenService
+from reviewer_stk_ai.src.utils.constants import APPLICATION_NAME
+from reviewer_stk_ai.src.exceptions import retry_if_integration_error
 
 logger = logging.getLogger(APPLICATION_NAME)
 
@@ -21,10 +24,19 @@ class StkExecutionService:
 
     def __init__(self, env_config: EnvConfig, stk_token_service=None):
         self._stk_token_service = stk_token_service
-        self._url = env_config.get_host_stk_ai() + "/v1/quick-commands/create-execution/{id_quick_command}"
+        self._url = (
+            env_config.get_host_stk_ai()
+            + "/v1/quick-commands/create-execution/{id_quick_command}"
+        )
         self._id_quick_command = env_config.get_stk_id_quick_command()
         self._proxies = env_config.get_proxies()
 
+    @retry(
+        retry_on_exception=retry_if_integration_error,
+        stop_max_attempt_number=3,
+        wait_exponential_multiplier=1000,
+        wait_exponential_max=5000,
+    )
     def create(self, file_content: str, conversation_id: str = None) -> str:
         logger.info("Starting file upload to STK AI")
         url = self._url.format(id_quick_command=self._id_quick_command)
@@ -59,10 +71,12 @@ class StkExecutionService:
                     f"Authentication failure with execution API: {response.text}"
                 )
 
-            raise IntegrationError(
-                f"Integration with execution API failed: status_code: {response.status_code}"
-                f' message: {response.text or "No message"}'
-            )
+            if e.response.status_code >= 500:
+                raise IntegrationError(
+                    f"Integration with execution API failed: status_code: {response.status_code}"
+                    f' message: {response.text or "No message"}'
+                )
+            raise
         except Exception as e:
             logger.error(f"Error processing file upload: {e.args[0]}")
             raise

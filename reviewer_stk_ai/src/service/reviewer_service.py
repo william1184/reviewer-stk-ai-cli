@@ -2,14 +2,10 @@ import logging
 from multiprocessing import Pool, cpu_count
 from typing import Dict, List
 
-import click
-
-from src.models.file_review import FileReview
-from src.service.stk_callback_service import StkCallbackService
-from src.service.stk_execution_service import StkExecutionService
-from src.service.stk_token_service import StkTokenService
-from src.utils.constants import APPLICATION_NAME
-from src.utils.git_helper import find_all_changed_code
+from reviewer_stk_ai.src.models.file_review import FileReview
+from reviewer_stk_ai.src.service.stk_callback_service import StkCallbackService
+from reviewer_stk_ai.src.service.stk_execution_service import StkExecutionService
+from reviewer_stk_ai.src.utils.constants import APPLICATION_NAME
 
 logger = logging.getLogger(APPLICATION_NAME)
 
@@ -19,20 +15,12 @@ class ReviewerService:
     _stk_callback_service: StkCallbackService
 
     def __init__(
-            self,
-            env_config=None,
-            stk_token_service=None,
-            stk_execution_service=None,
-            stk_callback_service=None,
+        self,
+        stk_execution_service=None,
+        stk_callback_service=None,
     ):
-        stk_token_service = stk_token_service or StkTokenService(env_config=env_config)
-
-        self._stk_execution_service = stk_execution_service or StkExecutionService(
-            env_config=env_config, stk_token_service=stk_token_service
-        )
-        self._stk_callback_service = stk_callback_service or StkCallbackService(
-            env_config=env_config, stk_token_service=stk_token_service
-        )
+        self._stk_execution_service = stk_execution_service
+        self._stk_callback_service = stk_callback_service
 
     def run(self, file_reviews: List[FileReview]) -> Dict[str, str]:
         logger.info("Starting file review")
@@ -45,15 +33,12 @@ class ReviewerService:
             self._find_callback_review(review=file_reviews[0])
             content_by_filename[file_reviews[0].name] = file_reviews[0].review
 
-            with click.progressbar(file_reviews[1:]) as bar:
-                for file_review in file_reviews[1:]:
-                    self._send_to_ai(review=file_review)
-
             filename_by_execution_id = {}
-            with click.progressbar(file_reviews[1:]) as bar:
-                for file_review in file_reviews[1:]:
-                    file_review.conversation_id = file_reviews[0].conversation_id
-                    filename_by_execution_id[file_review.execution_id] = file_review.name
+
+            for file_review in file_reviews[1:]:
+                file_review.conversation_id = file_reviews[0].conversation_id
+                self._send_to_ai(review=file_review)
+                filename_by_execution_id[file_review.execution_id] = file_review.name
 
             content_by_filename.update(
                 self._run_parallel(filename_by_execution_id=filename_by_execution_id)

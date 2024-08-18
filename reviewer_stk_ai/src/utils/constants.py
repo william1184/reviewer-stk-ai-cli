@@ -11,7 +11,7 @@ DEFAULT_IGNORED_FILES = {"setup.py", "manage.py", "__init__.py"}
 DEFAULT_EXTENSION = ".py"
 DEFAULT_DIRECTORY = "."
 DEFAULT_REPORT_DIRECTORY = "report"
-DEFAULT_REPORT_FILENAME = "code-report"
+DEFAULT_REPORT_FILENAME = "review-code-report.md"
 
 # Default
 

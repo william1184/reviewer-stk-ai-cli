@@ -2,13 +2,13 @@ import logging
 import os
 from typing import Set, Dict
 
-from src.utils.constants import APPLICATION_NAME
+from reviewer_stk_ai.src.utils.constants import APPLICATION_NAME
 
 logger = logging.getLogger(APPLICATION_NAME)
 
 
 def find_all_files(
-        directory: str, extension: str, ignored_directories: Set, ignored_files: Set
+    directory: str, extension: str, ignored_directories: Set, ignored_files: Set
 ) -> Dict[str, str]:
     try:
         files = {}
@@ -64,14 +64,28 @@ def create_directory(directory: str):
         raise
 
 
+def create_file_and_directory(directory: str, file_name: str, content: str):
+    if not os.path.exists(directory):
+        os.makedirs(directory)
+        logger.debug(f"Directory {directory} created!")
+
+    path = directory + "/" + file_name
+    create_file(file_name=path, content=content)
+
+
 def create_file(file_name: str, content: str):
-    try:
-        logger.debug(f"Creating file: {file_name}")
+    logger.debug(f"Creating file: {file_name}")
 
-        with open(file_name, "w", encoding="utf-8") as file_md:
-            file_md.write(content)
+    with open(file_name, "w", encoding="utf-8") as file_md:
+        file_md.write(content)
 
-        logger.debug(f"File '{file_name}' created successfully.")
-    except Exception:
-        logger.error(f"Error creating file: {file_name}")
-        raise
+    logger.debug(f"File '{file_name}' created successfully.")
+
+
+__all__ = [
+    "create_file",
+    "create_file_and_directory",
+    "find_all_files",
+    "read_file",
+    "create_directory",
+]
