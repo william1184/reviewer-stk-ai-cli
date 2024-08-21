@@ -10,4 +10,5 @@ concurrency:
 jobs:
   run-python-build-test:
     uses: william1184/content-reviewer-stk-ai-cli/.github/workflows/python-build-test.yml@main
-    secrets: inherit
+    with:
+      environment: 'feature'

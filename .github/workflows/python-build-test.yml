@@ -2,9 +2,10 @@ name: Reusable build and test
 
 on:
   workflow_call:
-    secrets:
-      token:
+    inputs:
+      environment:
         required: true
+        type: string
 
 jobs:
   build:
@@ -52,4 +53,5 @@ jobs:
           path: dist/
       - name: Run tests
         run: >-
+          echo Running at ${{ inputs.environment }}
           poetry run pytest
