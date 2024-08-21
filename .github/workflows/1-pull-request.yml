@@ -3,7 +3,7 @@ name: Publish Python 🐍 distribution 📦 to PyPI and TestPyPI
 on:
   push:
     branches:
-      - feature*
+      - *
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -15,3 +15,4 @@ jobs:
       contents: read
       pull-requests: write
     uses: william1184/content-reviewer-stk-ai-cli/.github/workflows/python-build-test.yml@main
+    secrets: inherit
