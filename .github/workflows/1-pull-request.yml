@@ -3,15 +3,11 @@ name: Publish Python 🐍 distribution 📦 to PyPI and TestPyPI
 on:
   push
 
-
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
-  call-workflow-passing-data:
-    permissions:
-      contents: read
-      pull-requests: write
+  run-python-build-test:
     uses: william1184/content-reviewer-stk-ai-cli/.github/workflows/python-build-test.yml@main
     secrets: inherit

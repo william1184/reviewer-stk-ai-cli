@@ -1,0 +1,370 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="6e8aa347-4b2d-45d1-bc3c-3d7f4b7c95ef" name="Changes" comment="adicao git ignore e readme">
+      <change afterPath="$PROJECT_DIR$/.github/workflows/3-develop.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.github/workflows/5-realease.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.github/workflows/7-prod.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/.name" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/content-analyzer-stk-ai-cli.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/poetry.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/stackspot_ai_project_state.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.github/workflows/1-pull-request.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/1-pull-request.yml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="NamedScopeManager">
+    <scope name="app" pattern="file[code-analyzer-stk-ai]:reviewer_stk_ai/*||file[code-analyzer-stk-ai]:integration_tests/*||file[code-analyzer-stk-ai]:unit_tests/*||file:poetry.lock||file:pyproject.toml" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="ProjectErrors" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 6
+}</component>
+  <component name="ProjectId" id="2gyJE9FpaRjgytXVeuEzpPuehuv" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Python tests.Python tests for test_arquivo_util.TestArquivoUtil.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_arquivos_service.TestArquivoService.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_arquivos_service.TestArquivoService.test__caso__campos_obrigatorios_preenchidos__entao__retornar_resposta.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_arquivos_service.TestArquivoService.test_obter_caminhos_arquivo_busca.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_cli.TestCLIFunctional.test_cli_version.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_cli_unit.TestCli.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_cli_unit.TestCli.test__cli__when__directory_source_and_has_files__then__return_0.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_cli_unit.TestCli.test__cli__when_directory_source_and_files__then_return_0.executor&quot;: &quot;Debug&quot;,
+    &quot;Python tests.Python tests for test_code_reviewer.TestCodeReviewerService.test__caso__caso_2_arquivos__entao__retornar_criar_relatorio.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_git_helper.TestGitHelper.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_main.TestCli.test__cli__when_directory_source_and_files__then_return_0.executor&quot;: &quot;Debug&quot;,
+    &quot;Python tests.Python tests for test_main.TestCli.test__cli__when_directory_source_and_no_files__then_return_success.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_param_config.TestParamConfig.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_stk_callback_service.TestStkCallbackService.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_stk_execution_service.TestStkExecutionService.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_stk_token_service.Test.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_stk_token_service.Test.test__caso__campos_obrigatorios_preenchidos__entao__retornar_token.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_stk_token_service.Test.test_stk_token_service.executor&quot;: &quot;Debug&quot;,
+    &quot;Python tests.Python tests for tests.unit.app.test_main.TestCli.test__cli__when_directory_source_and_files__then_return_0.executor&quot;: &quot;Debug&quot;,
+    &quot;Python tests.Python tests in test_arquivos_service.py.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests in test_cli.py.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests in tests.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.pytest for test_cli.TestCLIFunctional.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.pytest for test_cli.TestCLIFunctional.test_cli_version.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.pytest for test_reviewer_stk_ai.TestReviewerStkAi.test_cli_review_changes_command__with_branch_release.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.pytest for tests.app.src.test_code_reviewer.TestCodeReviewerService.test__caso__campos_obrigatorios_preenchidos__entao__retornar_criar_relatorio.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.pytest for tests.app.src.test_code_reviewer.TestCodeReviewerService.test__caso__caso_2_arquivos__entao__retornar_criar_relatorio.executor&quot;: &quot;Debug&quot;,
+    &quot;Python tests.pytest for tests.integrated.test_cli.TestCLIFunctional.test_cli_version.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.pytest for tests.unit.app.test_cli_unit.TestCli.test__cli__when__directory_source_and_has_files__then__return_0.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.pytest for tests.unit.app.test_cli_unit.TestCli.test__cli__when_directory_source_and_files__then_return_0.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.pytest for tests.unit.app.test_main.TestCli.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.pytest for tests.unit.app.test_main.TestCli.test__cli__when_directory_source_and_files__then_return_success.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.pytest for tests.unit.app.test_main.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.pytest for unit_tests.app.src.service.test_stk_callback_service.TestStkCallbackService.test__when_required_fields_filled_with_conversation_id_and_returns_400__then_return_error.executor&quot;: &quot;Debug&quot;,
+    &quot;Python tests.pytest for unit_tests.app.src.service.test_stk_token_service.TestStkTokenService.test__when_required_fields_filled_and_returns_500__then_return_error.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.pytest for unit_tests.app.test_cli.TestCli.test__review_dir__when_has_files__then__return_success.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.pytest in integration_tests.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.pytest in test_cli.py.executor&quot;: &quot;Debug&quot;,
+    &quot;Python tests.pytest in tests.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.pytest in unit_tests.executor&quot;: &quot;Run&quot;,
+    &quot;Python.__main__.executor&quot;: &quot;Run&quot;,
+    &quot;Python.arquivo_util.executor&quot;: &quot;Run&quot;,
+    &quot;Python.cli (1).executor&quot;: &quot;Run&quot;,
+    &quot;Python.cli.executor&quot;: &quot;Run&quot;,
+    &quot;Python.code-reviewer (1).executor&quot;: &quot;Run&quot;,
+    &quot;Python.code_reviewer (1).executor&quot;: &quot;Run&quot;,
+    &quot;Python.code_reviewer.executor&quot;: &quot;Run&quot;,
+    &quot;Python.code_reviewer_env.executor&quot;: &quot;Run&quot;,
+    &quot;Python.criar_convite.executor&quot;: &quot;Run&quot;,
+    &quot;Python.param_config.executor&quot;: &quot;Run&quot;,
+    &quot;Python.stk_ai_cli.executor&quot;: &quot;Run&quot;,
+    &quot;Python.stk_execution_service.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/willi/PycharmProjects/content-reviewer-stk-ai-cli/.github/workflows&quot;,
+    &quot;run.code.analysis.last.selected.profile&quot;: &quot;aDefault&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\willi\PycharmProjects\content-reviewer-stk-ai-cli\.github\workflows" />
+      <recent name="C:\Users\willi\PycharmProjects\content-reviewer-stk-ai-cli\integration_tests\mock" />
+      <recent name="C:\Users\willi\PycharmProjects\content-reviewer-stk-ai-cli\integration_tests" />
+      <recent name="C:\Users\willi\PycharmProjects\content-reviewer-stk-ai-cli\integration_tests\files" />
+      <recent name="C:\Users\willi\PycharmProjects\content-reviewer-stk-ai-cli\reviewer_stk_ai" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\willi\PycharmProjects\content-reviewer-stk-ai-cli\.github\workflows" />
+      <recent name="C:\Users\willi\PycharmProjects\content-reviewer-stk-ai-cli\.github\workflows\reusable" />
+      <recent name="C:\Users\willi\PycharmProjects\content-reviewer-stk-ai-cli\integration_tests\mock" />
+      <recent name="C:\Users\willi\PycharmProjects\content-reviewer-stk-ai-cli\unit_tests" />
+      <recent name="C:\Users\willi\PycharmProjects\content-reviewer-stk-ai-cli\integration_tests" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Python tests.pytest in integration_tests">
+    <configuration name="cli" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="code-analyzer-stk-ai" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/reviewer_stk_ai" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="C:\Users\willi\PycharmProjects\content-reviewer-stk-ai-cli\reviewer_stk_ai\cli.py" />
+      <option name="PARAMETERS" value="--host-stk-ai http://localhost:3001 --host-token-stk-ai http://localhost:3001 --quick-command-id code-review-python-ptbr --client-id 123 --client-secret assa review-dir" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="code-reviewer" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
+      <module name="code-analyzer-stk-ai" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="C:\Users\willi\PycharmProjects\code-reviewer-stk-ai\code-reviewer.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="code_reviewer" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
+      <module name="code-analyzer-stk-ai" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="C:\Users\willi\PycharmProjects\code-reviewer-stk-ai\code_reviewer.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="pytest for test_reviewer_stk_ai.TestReviewerStkAi.test_cli_review_changes_command__with_branch_release" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
+      <module name="code-analyzer-stk-ai" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/integration_tests" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="_new_keywords" value="&quot;&quot;" />
+      <option name="_new_parameters" value="&quot;&quot;" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;test_reviewer_stk_ai.TestReviewerStkAi.test_cli_review_changes_command__with_branch_release&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+      <method v="2" />
+    </configuration>
+    <configuration name="pytest for unit_tests.app.src.service.test_stk_token_service.TestStkTokenService.test__when_required_fields_filled_and_returns_500__then_return_error" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
+      <module name="code-analyzer-stk-ai" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/unit_tests" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="_new_keywords" value="&quot;&quot;" />
+      <option name="_new_parameters" value="&quot;&quot;" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;unit_tests.app.src.service.test_stk_token_service.TestStkTokenService.test__when_required_fields_filled_and_returns_500__then_return_error&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+      <method v="2" />
+    </configuration>
+    <configuration name="pytest for unit_tests.integrated.test_cli.TestCLIFunctional.test_cli_version" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
+      <module name="code-analyzer-stk-ai" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/unit_tests/integrated" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="_new_keywords" value="&quot;&quot;" />
+      <option name="_new_parameters" value="&quot;&quot;" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;unit_tests.integrated.test_cli.TestCLIFunctional.test_cli_version&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+      <method v="2" />
+    </configuration>
+    <configuration name="pytest in integration_tests" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
+      <module name="code-analyzer-stk-ai" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/integration_tests" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="_new_keywords" value="&quot;&quot;" />
+      <option name="_new_parameters" value="&quot;&quot;" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;$PROJECT_DIR$/integration_tests&quot;" />
+      <option name="_new_targetType" value="&quot;PATH&quot;" />
+      <method v="2" />
+    </configuration>
+    <configuration name="pytest in unit_tests" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
+      <module name="code-analyzer-stk-ai" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/unit_tests" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="_new_keywords" value="&quot;&quot;" />
+      <option name="_new_parameters" value="&quot;&quot;" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;$PROJECT_DIR$/unit_tests&quot;" />
+      <option name="_new_targetType" value="&quot;PATH&quot;" />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Python.cli" />
+      <item itemvalue="Python.code-reviewer" />
+      <item itemvalue="Python.code_reviewer" />
+      <item itemvalue="Python tests.pytest for test_reviewer_stk_ai.TestReviewerStkAi.test_cli_review_changes_command__with_branch_release" />
+      <item itemvalue="Python tests.pytest for unit_tests.app.src.service.test_stk_token_service.TestStkTokenService.test__when_required_fields_filled_and_returns_500__then_return_error" />
+      <item itemvalue="Python tests.pytest for unit_tests.integrated.test_cli.TestCLIFunctional.test_cli_version" />
+      <item itemvalue="Python tests.pytest in integration_tests" />
+      <item itemvalue="Python tests.pytest in unit_tests" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python tests.pytest in integration_tests" />
+        <item itemvalue="Python tests.pytest for test_reviewer_stk_ai.TestReviewerStkAi.test_cli_review_changes_command__with_branch_release" />
+        <item itemvalue="Python tests.pytest in unit_tests" />
+        <item itemvalue="Python tests.pytest for unit_tests.app.src.service.test_stk_token_service.TestStkTokenService.test__when_required_fields_filled_and_returns_500__then_return_error" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-python-sdk-7a29c1521ef0-d3b881c8e49f-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-233.11799.298" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="6e8aa347-4b2d-45d1-bc3c-3d7f4b7c95ef" name="Changes" comment="" />
+      <created>1716663769696</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1716663769696</updated>
+    </task>
+    <task id="LOCAL-00001" summary="adicao git ignore e readme">
+      <option name="closed" value="true" />
+      <created>1716677840258</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1716677840258</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
+    <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="adicao git ignore e readme" />
+    <option name="LAST_COMMIT_MESSAGE" value="adicao git ignore e readme" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://D:/GITHUB/convite-ceci/criar_convite.py</url>
+          <line>29</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/reviewer_stk_ai/cli.py</url>
+          <line>347</line>
+          <option name="timeStamp" value="39" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/reviewer_stk_ai/src/utils/git_helper.py</url>
+          <line>65</line>
+          <option name="timeStamp" value="40" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/reviewer_stk_ai/src/exceptions/__init__.py</url>
+          <line>5</line>
+          <option name="timeStamp" value="48" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/reviewer_stk_ai/src/service/stk_token_service.py</url>
+          <line>91</line>
+          <option name="timeStamp" value="49" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/reviewer_stk_ai/src/service/stk_callback_service.py</url>
+          <option name="timeStamp" value="51" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>
