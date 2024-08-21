@@ -56,7 +56,7 @@ class TestCli(TestCase):
 
     def test__review_dir__when_has_files__then__return_success(self):
         self._mock_find_all_files.return_value = {
-            "/root/dir2\\file_3.py": "file content",
+            "/root/dir2/file_3.py": "file content",
         }
 
         self._mock_review_service.run.return_value = {
@@ -186,7 +186,7 @@ class TestCli(TestCase):
 
     def test__review_dir__when_integration_error__then_return_fail(self):
         self._mock_find_all_files.return_value = {
-            "/root/dir2\\file_3.py": "file content",
+            "/root/dir2/file_3.py": "file content",
         }
 
         self._mock_review_service.side_effect = IntegrationError("error 500")
