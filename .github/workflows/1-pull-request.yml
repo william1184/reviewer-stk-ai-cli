@@ -14,4 +14,4 @@ jobs:
     permissions:
       contents: read
       pull-requests: write
-    uses: william1184/content-reviewer-stk-ai-cli/.github/workflows/reusable/python-build-test.yml@main
+    uses: william1184/content-reviewer-stk-ai-cli/.github/workflows/python-build-test.yml@main
