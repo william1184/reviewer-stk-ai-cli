@@ -18,12 +18,19 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: "3.x"
-      - name: Install pypa/build
-        run: >-
-          python3 -m
-          pip install
-          poetry
-          --user
+      - name: Install poetry
+        uses: abatilo/actions-poetry@v2
+      - name: Setup a local virtual environment (if no poetry.toml file)
+        run: |
+          poetry config virtualenvs.create true --local
+          poetry config virtualenvs.in-project true --local
+      - uses: actions/cache@v3
+        name: Define a cache for the virtual environment based on the dependencies lock file
+        with:
+          path: ./.venv
+          key: venv-${{ hashFiles('poetry.lock') }}
+      - name: Install the project dependencies
+        run: poetry install
       - name: Build a binary wheel and a source tarball
         run: poetry build
       - name: Store the distribution packages
@@ -31,7 +38,6 @@ jobs:
         with:
           name: python-package-distributions
           path: dist/
-
   test:
     name: >-
       Test Python 🐍 distribution
@@ -44,14 +50,17 @@ jobs:
         with:
           python-version: "3.x"
       - name: Install poetry
-        run: >-
-          pip install poetry
-      - name: Download all the dists
-        uses: actions/download-artifact@v3
+        uses: abatilo/actions-poetry@v2
+      - name: Setup a local virtual environment (if no poetry.toml file)
+        run: |
+          poetry config virtualenvs.create true --local
+          poetry config virtualenvs.in-project true --local
+      - uses: actions/cache@v3
+        name: Define a cache for the virtual environment based on the dependencies lock file
         with:
-          name: python-package-distributions
-          path: dist/
-      - name: Run tests
-        run: >-
-          echo Running at ${{ inputs.environment }}
-          poetry run pytest
+          path: ./.venv
+          key: venv-${{ hashFiles('poetry.lock') }}
+      - name: Install the project dependencies
+        run: poetry install
+      - name: Run the automated tests (for example)
+        run: poetry run pytest -v
