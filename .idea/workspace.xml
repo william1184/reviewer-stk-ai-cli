@@ -6,7 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="6e8aa347-4b2d-45d1-bc3c-3d7f4b7c95ef" name="Changes" comment="adicao git ignore e readme">
       <change beforePath="$PROJECT_DIR$/.github/workflows/1-pull-request.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/1-pull-request.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.github/workflows/python-build-test.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/python-build-test.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -273,12 +272,12 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Python.cli" />
       <item itemvalue="Python.code-reviewer" />
       <item itemvalue="Python.code_reviewer" />
+      <item itemvalue="Python.cli" />
+      <item itemvalue="Python tests.pytest for unit_tests.integrated.test_cli.TestCLIFunctional.test_cli_version" />
       <item itemvalue="Python tests.pytest for test_reviewer_stk_ai.TestReviewerStkAi.test_cli_review_changes_command__with_branch_release" />
       <item itemvalue="Python tests.pytest for unit_tests.app.src.service.test_stk_token_service.TestStkTokenService.test__when_required_fields_filled_and_returns_500__then_return_error" />
-      <item itemvalue="Python tests.pytest for unit_tests.integrated.test_cli.TestCLIFunctional.test_cli_version" />
       <item itemvalue="Python tests.pytest in integration_tests" />
       <item itemvalue="Python tests.pytest in unit_tests" />
     </list>

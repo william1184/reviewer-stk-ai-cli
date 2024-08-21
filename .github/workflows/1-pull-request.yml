@@ -14,9 +14,12 @@ jobs:
       environment: 'feature'
 
   create-pull-request:
-    name: Create Pull Request
-    uses: peter-evans/create-pull-request.yml@v6
-    with:
-      base: main
-      branch: ${{ github.head_ref || github.ref_name }}
-#      delete-branch: true
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v6
+        with:
+          base: main
+          branch: ${{ github.head_ref || github.ref_name }}
+    #      delete-branch: true
