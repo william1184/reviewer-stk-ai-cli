@@ -37,9 +37,6 @@ jobs:
     needs:
       - build
     runs-on: ubuntu-latest
-    permissions:
-      id-token: write  # IMPORTANT: mandatory for trusted publishing
-
     steps:
       - name: Set up Python
         uses: actions/setup-python@v5
