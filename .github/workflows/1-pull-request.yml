@@ -8,12 +8,14 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  run-python-build-test:
+  ci:
     uses: william1184/content-reviewer-stk-ai-cli/.github/workflows/python-build-test.yml@main
     with:
       environment: 'feature'
 
   create-pull-request:
+    needs:
+      - ci
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
