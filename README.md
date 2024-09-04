@@ -1,13 +1,14 @@
 # StackSpot AI CLI
 
-This CLI tool is designed to interact with StackSpot AI for code review and analysis. It is built using Python and managed with Poetry.
+This CLI tool is designed to interact with StackSpot AI for code review and analysis. It is built using Python and
+managed with Poetry.
 
 ## Table of Contents
 
 - [Installation](#installation)
 - [Usage](#usage)
-  - [Review Changes](#review-changes)
-  - [Review Directory](#review-directory)
+    - [Review Directory](#Directory)
+    - [Review Changes](#Diff)    
 - [License](#license)
 
 ## Installation
@@ -23,6 +24,7 @@ This CLI tool is designed to interact with StackSpot AI for code review and anal
   ```
 
 ## Usage
+
 You can use the CLI tool by running the cli.py script. The general command structure is:
 
 ```bash
@@ -52,9 +54,43 @@ The CLI provides several options that can be passed globally or for specific com
 - `--debug/--no-debug`: Enable or disable debug mode.
 
 ## Commands
-### Command: review_changes
 
-This command reviews changes between two branches in a Git repository. It compares the specified branches and analyzes the modified files.
+
+
+### Directory
+
+This command reviews all files in a specified directory.
+
+### Example:
+
+```bash
+reviewer_stk_ai --quick-command-id YOUR_QUICK_COMMAND --client-id YOUR_CLIENT_ID --client-secret YOUR_CLIENT_SECRET review_dir --directory ./src
+```
+
+### Examples
+
+Reviewing all files in the current directory:
+
+```bash
+reviewer_stk_ai --quick-command-id YOUR_QUICK_COMMAND --client-id YOUR_CLIENT_ID --client-secret YOUR_CLIENT_SECRET
+```
+
+Ignoring specific directories and files during review:
+
+```bash
+reviewer_stk_ai --quick-command-id YOUR_QUICK_COMMAND --client-id YOUR_CLIENT_ID --client-secret YOUR_CLIENT_SECRET --ignored-directories .git --ignored-files config.py
+```
+
+Example all parameters fullified
+
+``` bash
+reviewer_stk_ai --quick-command-id code-review-python-ptbr --client-id YOUR_CLIENT_ID --client-secret YOUR_CLIENT_SECRET --realm zup --retry-timeout 8 --retry-max-attempts 3 --host-stk-ai http://localhost:3001 --host-token-stk-ai http://localhost:3001 --https-proxy --https-proxy --report-filename diff_report.txt --report-directory reports --ignored-directories unit_tests --ignored-files __main__.py --extension .py --directory . --debug
+```
+
+### Diff
+
+This command reviews changes between two branches in a Git repository. It compares the specified branches and analyzes
+the modified files.
 
 #### Options:
 
@@ -62,36 +98,29 @@ This command reviews changes between two branches in a Git repository. It compar
 - `--compare-branch <string>`: The branch to compare against the base (default: "develop").
 
 #### Example:
-```bash
-reviewer_stk_ai review_changes --base-branch main --compare-branch feature-branch
-```
 
-### Command: review_dir
-
-This command reviews all files in a specified directory.
-
-### Example:
-```bash
-reviewer_stk_ai review_dir --directory ./src
-```
-
-### Examples
-Reviewing all files in the current directory:
-
-```bash
-reviewer_stk_ai review_dir
-```
 Comparing changes between branches and generating a report:
 
 ```bash
-reviewer_stk_ai review_changes --base-branch main --compare-branch feature-branch --report-filename diff_report.txt
+reviewer_stk_ai --quick-command-id YOUR_QUICK_COMMAND --client-id YOUR_CLIENT_ID --client-secret YOUR_CLIENT_SECRET diff --base-branch main --compare-branch feature-branch
 ```
-Ignoring specific directories and files during review:
+
+#### Example:
+
+Comparing changes between branches and generating a report:
 
 ```bash
-reviewer_stk_ai review_dir --ignored-directories .git --ignored-files config.py
+reviewer_stk_ai --quick-command-id YOUR_QUICK_COMMAND --client-id YOUR_CLIENT_ID --client-secret YOUR_CLIENT_SECRET diff --base-branch main --compare-branch feature-branch
 ```
+
+Example all parameters fullified
+
+``` bash
+reviewer_stk_ai --quick-command-id code-review-python-ptbr --client-id YOUR_CLIENT_ID --client-secret YOUR_CLIENT_SECRET --realm zup --retry-timeout 8 --retry-max-attempts 3 --host-stk-ai http://localhost:3001 --host-token-stk-ai http://localhost:3001 --https-proxy --https-proxy --report-filename diff_report.txt --report-directory reports --ignored-directories unit_tests --ignored-files __main__.py --extension .py --directory . --debug diff --base-branch main --compare-branch feature-branch
+```
+
 #### Configuration
+
 You can configure environment variables to set default values for the options:
 
 - `HTTPS_PROXY`, `HTTP_PROXY`: Proxies for requests.
@@ -100,4 +129,5 @@ You can configure environment variables to set default values for the options:
 - `CR_STK_AI_CLIENT_ID`, `CR_STK_AI_CLIENT_SECRET`, `CR_STK_AI_ID_QUICK_COMMAND`: Authentication credentials.
 
 ### License
+
 This project is licensed under the MIT License. See the LICENSE file for details.

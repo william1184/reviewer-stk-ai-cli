@@ -6,7 +6,6 @@ from click.testing import CliRunner
 
 from reviewer_stk_ai.src.exceptions.integration_error import IntegrationError
 from reviewer_stk_ai.src.utils.constants import (
-    APPLICATION_NAME,
     EXIT_SUCCESS,
     EXIT_FAIL,
 )
@@ -75,7 +74,7 @@ class TestCli(TestCase):
                 "test_client-secret",
                 "review-dir",
             ],
-            prog_name=APPLICATION_NAME,
+            prog_name="reviewer_stk_ai",
         )
 
         self.assertEqual(EXIT_SUCCESS, result.exit_code)
@@ -116,7 +115,7 @@ class TestCli(TestCase):
                 "test_client-secret",
                 "review-dir",
             ],
-            prog_name=APPLICATION_NAME,
+            prog_name="reviewer_stk_ai",
         )
 
         self.assertEqual(EXIT_SUCCESS, result.exit_code)
@@ -152,7 +151,7 @@ class TestCli(TestCase):
                 "test_client-secret",
                 "review-dir",
             ],
-            prog_name=APPLICATION_NAME,
+            prog_name="reviewer_stk_ai",
         )
 
         self.assertEqual(EXIT_FAIL, result.exit_code)
@@ -175,7 +174,7 @@ class TestCli(TestCase):
                 "test_client-secret",
                 "review-dir",
             ],
-            prog_name=APPLICATION_NAME,
+            prog_name="reviewer_stk_ai",
         )
 
         self.assertEqual(EXIT_FAIL, result.exit_code)
@@ -202,7 +201,7 @@ class TestCli(TestCase):
                 "test_client-secret",
                 "review-dir",
             ],
-            prog_name=APPLICATION_NAME,
+            prog_name="reviewer_stk_ai",
         )
 
         self.assertEqual(EXIT_FAIL, result.exit_code)
@@ -211,7 +210,7 @@ class TestCli(TestCase):
         self._mock_review_service.run.assert_called_once()
         self._mock_create_file_and_directory.assert_not_called()
 
-    def test__review_changes__when_has_changes__then_return_success(self):
+    def test__diff__when_has_changes__then_return_success(self):
         self._mock_find_all_changed_code.return_value = {
             "file1.py": (
                 "index 83db48f..e312f45 100644\n"
@@ -237,9 +236,9 @@ class TestCli(TestCase):
                 "test_client-id",
                 "--client-secret",
                 "test_client-secret",
-                "review-changes",
+                "diff",
             ],
-            prog_name=APPLICATION_NAME,
+            prog_name="reviewer_stk_ai",
         )
 
         self.assertEqual(EXIT_SUCCESS, result.exit_code)
@@ -268,7 +267,7 @@ class TestCli(TestCase):
             content="# File name: b/file1.py \n\n Points found:\nI am not able to perform the code review of this file",
         )
 
-    def test__review_changes__when_no_changes__then_return_success(self):
+    def test__diff__when_no_changes__then_return_success(self):
         self._mock_find_all_changed_code.return_value = {}
 
         result = self.runner.invoke(
@@ -280,9 +279,9 @@ class TestCli(TestCase):
                 "test_client-id",
                 "--client-secret",
                 "test_client-secret",
-                "review-changes",
+                "diff",
             ],
-            prog_name=APPLICATION_NAME,
+            prog_name="reviewer_stk_ai",
         )
 
         self.assertEqual(EXIT_SUCCESS, result.exit_code)
@@ -306,7 +305,7 @@ class TestCli(TestCase):
         self._mock_review_service.run.assert_not_called()
         self._mock_create_file_and_directory.assert_not_called()
 
-    def test__review_changes__when_keyboard_error__then_return_fail(self):
+    def test__diff__when_keyboard_error__then_return_fail(self):
         self._mock_find_all_changed_code.side_effect = KeyboardInterrupt("Stopped")
 
         result = self.runner.invoke(
@@ -318,9 +317,9 @@ class TestCli(TestCase):
                 "test_client-id",
                 "--client-secret",
                 "test_client-secret",
-                "review-changes",
+                "diff",
             ],
-            prog_name=APPLICATION_NAME,
+            prog_name="reviewer_stk_ai",
         )
 
         self.assertEqual(EXIT_FAIL, result.exit_code)

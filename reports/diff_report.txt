@@ -1,0 +1,11 @@
+# File name: .\reviewer_stk_ai\cli.py 
+
+ Points found:\n'
+           'I am not able to perform the code review of this file. 
+
+---
+
+# File name: .\tests\unit_tests\files\mock.py 
+
+ Points found:\n'
+           'I am not able to perform the code review of this file. 

@@ -4,6 +4,7 @@ import requests
 from retrying import retry
 
 from reviewer_stk_ai.src.config.env_config import EnvConfig
+from reviewer_stk_ai.src.exceptions import retry_if_integration_error
 from reviewer_stk_ai.src.exceptions.authentication_error import AuthenticationError
 from reviewer_stk_ai.src.exceptions.integration_contract_error import (
     IntegrationContractError,
@@ -11,7 +12,6 @@ from reviewer_stk_ai.src.exceptions.integration_contract_error import (
 from reviewer_stk_ai.src.exceptions.integration_error import IntegrationError
 from reviewer_stk_ai.src.service.stk_token_service import StkTokenService
 from reviewer_stk_ai.src.utils.constants import APPLICATION_NAME
-from reviewer_stk_ai.src.exceptions import retry_if_integration_error
 
 logger = logging.getLogger(APPLICATION_NAME)
 

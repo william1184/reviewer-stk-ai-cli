@@ -1,0 +1,23 @@
+name: 10 - Deploy
+
+on:
+  pull_request:
+    types:
+      - closed
+    branches:
+      - 'main**'
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  ci:
+    uses: william1184/content-reviewer-stk-ai-cli/.github/workflows/python-build-test.yml@main
+    with:
+      environment: 'prod'
+
+  publish:
+    uses: william1184/content-reviewer-stk-ai-cli/.github/workflows/publish.yml@main
+    with:
+      environment: 'prod'

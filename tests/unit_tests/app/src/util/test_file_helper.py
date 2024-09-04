@@ -2,6 +2,8 @@ import unittest
 from unittest import TestCase, mock
 from unittest.mock import mock_open, patch
 
+from src.utils.constants import TEMP_PATH
+
 
 class TestFileHelper(TestCase):
 
@@ -263,6 +265,41 @@ class TestFileHelper(TestCase):
 
         # Verify if the file was attempted to be opened correctly
         mock_file.assert_called_once_with(file_name, "w", encoding="utf-8")
+
+    @mock.patch("os.walk")
+    @patch("builtins.open", new_callable=mock_open, read_data="file content")
+    def test__merge_tmp_files__has_files_should_return_the_content_merged(
+        self, mock_read_file, mock_os_walk
+    ):
+        # arrange
+        mock_os_walk.return_value = [
+            ("/root/reviewer_stk_ai", [], ["cli.py"]),
+            ("/root/reviewer_stk_ai", [], ["main.py"]),
+        ]
+
+        # act
+        from src.utils.file_helper import merge_tmp_files
+
+        merged_content = merge_tmp_files(path=TEMP_PATH)
+
+        # assert
+        self.assertEqual("file content\n\n---\n\nfile content", merged_content)
+
+    @mock.patch("os.walk")
+    @patch("builtins.open", new_callable=mock_open, read_data="file content")
+    def test__merge_tmp_files__has_no_files_should_return_empty(
+        self, mock_read_file, mock_os_walk
+    ):
+        # arrange
+        mock_os_walk.return_value = []
+
+        # act
+        from src.utils.file_helper import merge_tmp_files
+
+        merged_content = merge_tmp_files(path=TEMP_PATH)
+
+        # assert
+        self.assertEqual("", merged_content)
 
 
 if __name__ == "__main__":

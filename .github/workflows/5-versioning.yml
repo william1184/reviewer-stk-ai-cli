@@ -1,0 +1,60 @@
+name: 5 - Version Bump on PR
+
+on:
+  pull_request:
+    types:
+      - opened
+      - edited
+      - synchronize
+    branches:
+      - 'feature**'
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  ci:
+    uses: william1184/content-reviewer-stk-ai-cli/.github/workflows/python-build-test.yml@main
+    with:
+      environment: 'dev'
+
+  versioning:
+    runs-on: ubuntu-latest
+    if: ${{ github.event.pull_request.body && contains(github.event.pull_request.body, 'Version') }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+
+      - name: Extract Version from PR Description
+        id: extract_version
+        run: |
+          VERSION=$(echo "${{ github.event.pull_request.body }}" | grep -oP '(?<=Version: ).*')
+          echo "VERSION=${VERSION}" >> $GITHUB_ENV
+          echo "Extracted version: ${VERSION}"
+
+      - name: Update Version in pyproject.toml
+        run: |
+          sed -i "s/^version = .*/version = \"${{ env.VERSION }}\"/" pyproject.toml
+
+      - name: Commit Version Update
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git checkout -b version-bump-${{ env.VERSION }}
+          git add pyproject.toml
+          git commit -m "Bump version to ${{ env.VERSION }}"
+          git push origin version-bump-${{ env.VERSION }}
+
+      - name: Update PR with New Branch
+        uses: peter-evans/create-pull-request@v5
+        with:
+          branch: version-bump-${{ env.VERSION }}
+          update-existing-pr: true
+          commit-message: "Bump version to ${{ env.VERSION }}"
+

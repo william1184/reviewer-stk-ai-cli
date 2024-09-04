@@ -4,7 +4,7 @@ build-backend = "poetry.core.masonry.api"
 
 [tool.poetry]
 name = "reviewer-stk-ai"
-version = "1.1.0"
+version = "1.0.1a1"
 description = "Automated analysis with Stackspot AI offers capabilities such as code review generation, documentation creation, and much more."
 authors = ["Frank William <williamsp1184@gmail.com>"]
 maintainers = ["Frank William <williamsp1184@gmail.com>"]
@@ -45,7 +45,7 @@ pythonpath = [
     "reviewer_stk_ai"
 ]
 testpaths = [
-    "unit_tests"
+    "tests"
 ]
 
 [tool.coverage.report]

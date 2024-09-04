@@ -64,13 +64,15 @@ def create_directory(directory: str):
         raise
 
 
-def create_file_and_directory(directory: str, file_name: str, content: str):
+def create_file_and_directory(directory: str, file_name: str, content: str) -> str:
     if not os.path.exists(directory):
         os.makedirs(directory)
         logger.debug(f"Directory {directory} created!")
 
     path = directory + "/" + file_name
     create_file(file_name=path, content=content)
+
+    return path
 
 
 def create_file(file_name: str, content: str):
@@ -82,10 +84,23 @@ def create_file(file_name: str, content: str):
     logger.debug(f"File '{file_name}' created successfully.")
 
 
+def merge_tmp_files(path: str) -> str:
+    separator = "\n\n---\n\n"
+    contents = []
+    for dirpath, dirnames, filenames in os.walk(path):
+        print(dirpath)
+        for file in filenames:
+            with open(f"{os.path.join(dirpath, file)}", "r") as infile:
+                contents.append(infile.read())
+
+    return separator.join(contents)
+
+
 __all__ = [
     "create_file",
     "create_file_and_directory",
     "find_all_files",
     "read_file",
     "create_directory",
+    "merge_tmp_files",
 ]

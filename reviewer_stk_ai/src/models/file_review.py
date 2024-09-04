@@ -1,5 +1,7 @@
 from typing import List, Dict
 
+from src.utils.hash_helper import generate_file_hash
+
 
 class FileReview:
     """
@@ -10,14 +12,14 @@ class FileReview:
         content (str): File content.
         execution_id (str): ID analyze execution.
         conversation_id (str): ID of llm conversation.
-        review (str): File analyze response.
+        llm_review (str): File analyze response.
     """
 
     name: str
     content: str
     execution_id: str
     conversation_id: str
-    review: str
+    llm_review: str
 
     def __init__(
         self,
@@ -25,13 +27,14 @@ class FileReview:
         conversation_id: str = "",
         name: str = "",
         content: str = "",
-        review: str = "",
+        llm_review: str = "",
     ):
         self.name = name
         self.content = content
         self.execution_id = execution_id
         self.conversation_id = conversation_id
-        self.review = review
+        self.llm_review = llm_review
+        self.file_content_hash = generate_file_hash(self.content)
 
     def __str__(self):
         return (
@@ -40,7 +43,7 @@ class FileReview:
             f"  Content: {self.content[:10]}{'...' if len(self.content) > 10 else ''}\n"
             f"  Execution ID: {self.execution_id}\n"
             f"  Conversation ID: {self.conversation_id}\n"
-            f"  Review: {self.review[:10]}{'...' if len(self.review) > 10 else ''}\n"
+            f"  Review: {self.llm_review[:10]}{'...' if len(self.llm_review) > 10 else ''}\n"
             f")"
         )
 

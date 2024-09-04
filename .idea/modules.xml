@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/../code-analyzer-stk-ai/.idea/code-analyzer-stk-ai.iml" filepath="$PROJECT_DIR$/../code-analyzer-stk-ai/.idea/code-analyzer-stk-ai.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../code-analyzer-stk-ai/.idea/reviewer-stk-ai-cli.iml" filepath="$PROJECT_DIR$/../code-analyzer-stk-ai/.idea/reviewer-stk-ai-cli.iml" />
     </modules>
   </component>
 </project>

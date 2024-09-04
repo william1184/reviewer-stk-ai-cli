@@ -1,4 +1,4 @@
-name: Feature
+name: 1 - Feature create
 
 on:
   push
@@ -11,7 +11,7 @@ jobs:
   ci:
     uses: william1184/content-reviewer-stk-ai-cli/.github/workflows/python-build-test.yml@main
     with:
-      environment: 'feature'
+      environment: 'dev'
 
   create-pull-request:
     needs:
@@ -19,9 +19,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Create Pull Request
+      - name: Create Pull Request to develop
         uses: peter-evans/create-pull-request@v6
         with:
           base: main
           branch: ${{ github.head_ref || github.ref_name }}
+          body: |
+            Version:
     #      delete-branch: true

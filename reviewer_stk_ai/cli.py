@@ -23,11 +23,10 @@ from reviewer_stk_ai.src.utils.constants import (
     DEFAULT_IGNORED_FILES,
 )
 from reviewer_stk_ai.src.utils.file_helper import (
-    create_file_and_directory,
     find_all_files,
 )
 from reviewer_stk_ai.src.utils.git_helper import find_all_changed_code
-from reviewer_stk_ai.src.utils.report_helper import merge_contents
+from reviewer_stk_ai.src.utils.report_helper import generate_report
 
 version = importlib.metadata.version(APPLICATION_NAME)
 
@@ -288,17 +287,16 @@ def run(ctx, params, files):
     files_reviews = FileReview.list_from_dict(files=files)
 
     click.echo("Reviewing files...")
-    content_by_name = ctx.obj["reviewer_service"].run(file_reviews=files_reviews)
+
+    ctx.obj["reviewer_service"].run(file_reviews=files_reviews)
 
     click.echo("Merging report files...")
-    content = merge_contents(content_by_name=content_by_name)
 
     click.echo("Creating report file...")
     file_name_with_extension = params["report_filename"]
-    create_file_and_directory(
-        directory=params["report_directory"],
-        file_name=file_name_with_extension,
-        content=content,
+
+    generate_report(
+        directory=params["report_directory"], file_name=file_name_with_extension
     )
 
     file_path = params["report_directory"] + "/" + file_name_with_extension
@@ -325,7 +323,7 @@ def run(ctx, params, files):
     metavar="<string>",
 )
 @click.pass_context
-def review_changes(ctx, base_branch, compare_branch):
+def diff(ctx, base_branch, compare_branch):
     params = ctx.obj["params"]
     try:
         click.echo(f"Finding files changed files {base_branch} > {compare_branch}.")

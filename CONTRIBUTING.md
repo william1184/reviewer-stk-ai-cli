@@ -60,6 +60,34 @@ To format code using Black, use the following command:
 poetry run black .
 ```
 
+
+### Publishing in QA Environment Local
+
+1 - poetry config repositories.test-pypi https://test.pypi.org/legacy/
+
+2 - poetry config pypi-token.test-pypi pypi-XXXXXXXX
+
+3 - poetry version prerelease
+    
+    |rule	        before	after  |
+    |major	        1.3.0	2.0.0  | 
+    |minor	        2.1.4	2.2.0  | 
+    |patch	        4.1.1	4.1.2  |
+    |premajor	1.0.2	2.0.0a0|
+    |preminor	1.0.2	1.1.0a0|
+    |prepatch	1.0.2	1.0.3a0|
+    |prerelease	1.0.2	1.0.3a0|
+    |prerelease	1.0.3a0	1.0.3a1|
+    |prerelease	1.0.3b0	1.0.3b1|
+
+4 - poetry publish -r test-pypi --build
+
+
+## Publishing in Prod Local
+1 - poetry config pypi-token.pypi pypi-XXXXXXXX
+
+2 - poetry publish
+
 ### Additional Guidelines
 Follow the coding standards and best practices.
 Write clear and concise commit messages.

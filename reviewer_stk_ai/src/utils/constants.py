@@ -31,3 +31,8 @@ ERROR_MESSAGE_CLIENT_ID = (
     "The client_id is required to connect to STK AI. Provide --client_id or the environment "
     "variable CR_STK_AI_CLIENT_ID"
 )
+
+
+TEMP_PATH = "./tmp"
+TEMP_PATH_EXEC = f"{TEMP_PATH}/exec"
+TEMP_PATH_REVIEW = f"{TEMP_PATH}/reviews"

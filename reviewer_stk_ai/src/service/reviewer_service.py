@@ -1,11 +1,12 @@
 import logging
 from multiprocessing import Pool, cpu_count
-from typing import Dict, List
+from typing import List
 
 from reviewer_stk_ai.src.models.file_review import FileReview
 from reviewer_stk_ai.src.service.stk_callback_service import StkCallbackService
 from reviewer_stk_ai.src.service.stk_execution_service import StkExecutionService
-from reviewer_stk_ai.src.utils.constants import APPLICATION_NAME
+from reviewer_stk_ai.src.utils.constants import APPLICATION_NAME, TEMP_PATH
+from src.utils.file_helper import create_file_and_directory
 
 logger = logging.getLogger(APPLICATION_NAME)
 
@@ -22,31 +23,26 @@ class ReviewerService:
         self._stk_execution_service = stk_execution_service
         self._stk_callback_service = stk_callback_service
 
-    def run(self, file_reviews: List[FileReview]) -> Dict[str, str]:
+    def run(self, file_reviews: List[FileReview]) -> None:
         logger.info("Starting file review")
-
-        content_by_filename = dict()
 
         if len(file_reviews) > 0:
 
-            self._send_to_ai(review=file_reviews[0])
-            self._find_callback_review(review=file_reviews[0])
-            content_by_filename[file_reviews[0].name] = file_reviews[0].review
-
-            filename_by_execution_id = {}
+            self.process_review(review=file_reviews[0])
 
             for file_review in file_reviews[1:]:
                 file_review.conversation_id = file_reviews[0].conversation_id
-                self._send_to_ai(review=file_review)
-                filename_by_execution_id[file_review.execution_id] = file_review.name
 
-            content_by_filename.update(
-                self._run_parallel(filename_by_execution_id=filename_by_execution_id)
+            self._run_parallel(
+                file_reviews=file_reviews[1:],
             )
 
         logger.info("File review completed")
 
-        return content_by_filename
+    def process_review(self, review):
+        self._send_to_ai(review=review)
+        self._find_callback_review(review=review)
+        self._store_temp_review(review=review)
 
     def _send_to_ai(self, review: FileReview) -> None:
         logger.info(f"Sending file: {review.name} for processing")
@@ -63,27 +59,15 @@ class ReviewerService:
             execution_id=review.execution_id
         )
 
-        review.review = callback_response["review"]
+        review.llm_review = callback_response["review"]
         review.conversation_id = callback_response["conversation_id"]
 
         logger.info(f"Execution of file: {review.name} completed")
 
-    def _run_parallel(self, filename_by_execution_id: Dict):
+    def _run_parallel(self, file_reviews: List[FileReview]):
         pool = Pool(cpu_count())
         try:
-            execution_ids = list(filename_by_execution_id.keys())
-
-            reviews = pool.map(
-                self._stk_callback_service.find, [ID for ID in execution_ids]
-            )
-
-            content_by_filename = {}
-            for _review in reviews:
-                execution_id = _review["execution_id"]
-                file_name = filename_by_execution_id[execution_id]
-                content_by_filename[file_name] = _review["review"]
-
-            return content_by_filename
+            pool.map(self.process_review, [review for review in file_reviews])
 
         except Exception:
             logger.exception("Multiprocessing error")
@@ -91,6 +75,12 @@ class ReviewerService:
         finally:
             logger.info("Review execution ended!")
             pool.close()
+
+    @staticmethod
+    def _store_temp_review(review: FileReview):
+        file_name = f"{review.execution_id}"
+        llm_review = "".join((f"File name: {review.name} \n\n", review.llm_review))
+        create_file_and_directory(TEMP_PATH, file_name, llm_review)
 
 
 __all__ = ["ReviewerService"]
